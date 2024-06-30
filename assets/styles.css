@@ -183,7 +183,7 @@ ul {
   cursor: not-allowed;
 }
 
-.out-of-stock-image {
+.outOfStockImage {
   filter: grayscale(100%);
 }
 
