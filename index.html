@@ -28,6 +28,10 @@
 
             <p v-if="onSale">On Sale</p>
             <p v-else>Not on Sale</p>
+
+            <ul>
+                <li v-for="detail in details">{{detail}}</li>
+            </ul>
         </div>
     </div>
 
