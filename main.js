@@ -14,8 +14,8 @@ createApp({
             '20% polyyester'
         ])
         const variants = ref([
-            { id: 2234, color: 'green', image: '/assets/images/socks_green.jpg', quantity:50},
-            { id: 2235, color: 'blue', image: '/assets/images/socks_blue.jpg', quantity:0}
+            { id: 2234, color: 'green', image: '/assets/images/socks_green.jpg', quantity:50, onSale: true},
+            { id: 2235, color: 'blue', image: '/assets/images/socks_blue.jpg', quantity:0, onSale: false}
         ])
         const selectedVariant = ref(0)
         const sizes = ref([
@@ -31,7 +31,8 @@ createApp({
             cart.value +=1
         }
         const title = computed(() =>{
-            return brand.value + ' ' + product.value
+            const variant = variants.value[selectedVariant.value]
+            return brand.value + ' ' + product.value + ' ' + (variant.onSale ? 'is on sale' : 'not on sale')
         })
         function updateImage(variantImage){
             image.value = variantImage
