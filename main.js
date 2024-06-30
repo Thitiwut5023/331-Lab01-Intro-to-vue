@@ -26,6 +26,10 @@ createApp({
             { id: 2235, color: 'blue', size: 'M'},
             { id: 2235, color: 'blue', size: 'L'}
         ])
+        const cart = ref(0)
+        function addToCart() {
+            cart.value +=1
+        }
         return {
             product,
             description,
@@ -36,7 +40,9 @@ createApp({
             onSale,
             details,
             variants,
-            sizes
+            sizes,
+            cart,
+            addToCart
         }
     }
 

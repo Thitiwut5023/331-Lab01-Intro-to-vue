@@ -13,6 +13,7 @@
 <body>
     <div id="app">
         <div class="nav-bar"></div>
+            <div class="cart">Cart({{ cart}})</div>
         <div class="product-display">
             <div class="product-container">
                 <div class="product-image">
@@ -35,6 +36,7 @@
             <div v-for="variant in variants" :key="variant.id">
                 {{variant.color}}
             </div>
+                <button class="button" v-on:click="addToCart">Add to Cart</button>
             <div class="sizes-container">
                 <div v-for="size in sizes" :key="size.id">
                     {{size.color}}: {{size.size}}
