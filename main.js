@@ -2,7 +2,7 @@ const { createApp, ref } = Vue
 
 createApp({
     setup(){
-        const product = ref('Boots')
+        const product = ref('Socks')
         const description = ref('These are sturdy and comfortable boots suitable for all terrains.') 
         return {
             product,
