@@ -178,6 +178,11 @@ ul {
   border-radius: 50%;
 }
 
+.disabledButton {
+  background-color: #d8d8d8;
+  cursor: not-allowed;
+}
+
 @media only screen and (max-width: 600px) {
   .container {
     flex-direction: column;

@@ -41,7 +41,7 @@
 
             </div>
             <div>
-                <button class="button" :disabled='!inStock' @click="addToCart">Add to Cart</button>
+                <button class="button" :disabled='!inStock' @click="addToCart" :class="{disabledButton: !inStock}">Add to Cart</button>
                 <buttonn class="button" @click="toggleStock">Toggle in Stock</buttonn>
             </div>
             <div class="sizes-container">
