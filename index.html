@@ -30,6 +30,9 @@
             <p v-if="onSale">On Sale</p>
             <p v-else>Not on Sale</p>
 
+            <p v-if="inStock">In Stock</p>
+            <p v-else>Out of Stock</p>
+
             <ul>
                 <li v-for="detail in details">{{detail}}</li>
             </ul>
@@ -38,6 +41,7 @@
                 {{variant.color}}
             </div>
                 <button class="button" @click="addToCart">Add to Cart</button>
+                <buttonn class="button" @click="toggleStock">Toggle in Stock</buttonn>
             <div class="sizes-container">
                 <div v-for="size in sizes" :key="size.id">
                     {{size.color}}: {{size.size}}
