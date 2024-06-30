@@ -5,9 +5,7 @@ createApp({
         const product = ref('Socks')
         const brand = ref('SE 331')
         const description = ref('These are sturdy and comfortable boots suitable for all terrains.')
-        const image = ref('./assets/images/socks_green.jpg')
         const productLink = ref('https://www.camt.cmu.ac.th') 
-        const inStock = ref(false)
         const inventory = ref(100)
         const onSale = ref(true)
         const details = ref([
@@ -16,9 +14,10 @@ createApp({
             '20% polyyester'
         ])
         const variants = ref([
-            { id: 2234, color: 'green', image: '/assets/images/socks_green.jpg'},
-            { id: 2235, color: 'blue', image: '/assets/images/socks_blue.jpg'}
+            { id: 2234, color: 'green', image: '/assets/images/socks_green.jpg', quantity:50},
+            { id: 2235, color: 'blue', image: '/assets/images/socks_blue.jpg', quantity:0}
         ])
+        const selectedVariant = ref(0)
         const sizes = ref([
             { id: 2234, color: 'green', size: 'S'},
             { id: 2234, color: 'green', size: 'M'},
@@ -40,6 +39,15 @@ createApp({
         function toggleStock(){
             inStock.value = !inStock.value
         }
+        function updateVariant(index){
+            selectedVariant.value = index;
+        }
+        const image = computed(() => {
+            return variants.value[selectedVariant.value].image
+        })
+        const inStock = computed(() => {
+            return variants.value[selectedVariant.value].quantity
+        })
         return {
             title,
             description,
