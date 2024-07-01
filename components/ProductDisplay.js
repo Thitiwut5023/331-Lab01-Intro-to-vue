@@ -32,13 +32,14 @@ const productDisplay = {
             <div>
                 <button class="button" :disabled='!inStock' @click="addToCart" :class="{disabledButton: !inStock}">Add to Cart</button>
                 <button class="button" :disable='!inStock' @click="removeToCart" :class="{'disabledButton': !inStock}">Remoce to cart</button>
-                <buttonn class="button" @click="toggleStock">Toggle in Stock</buttonn>
+                <button class="button" @click="toggleStock">Toggle in Stock</button>
             </div>
             <div class="sizes-container">
                 <div v-for="size in sizes" :key="size.id">
                     {{size.color}}: {{size.size}}
                 </div>
             </div>
+            <review-form    @review-submmited="addReview"></review-form>
         </div>
         `,
         props: {
@@ -73,6 +74,10 @@ const productDisplay = {
                 { id: 2235, color: 'blue', size: 'L'}
             ])
             const cart = ref(0)
+            const reviews = ref([])
+            function addReview(review){
+                reviews.value.push(review)
+            }
             function addToCart() {
                 emit('add-to-cart', variants.value[selectedVariant.value].id)
             }
