@@ -31,6 +31,7 @@ const productDisplay = {
             </div>
             <div>
                 <button class="button" :disabled='!inStock' @click="addToCart" :class="{disabledButton: !inStock}">Add to Cart</button>
+                <button class="button" :disable='!inStock' @click="removeToCart" :class="{'disabledButton': !inStock}">Remoce to cart</button>
                 <buttonn class="button" @click="toggleStock">Toggle in Stock</buttonn>
             </div>
             <div class="sizes-container">
@@ -73,7 +74,10 @@ const productDisplay = {
             ])
             const cart = ref(0)
             function addToCart() {
-                emit('add-to-card', variants.value[selectedVariant.value].id)
+                emit('add-to-cart', variants.value[selectedVariant.value].id)
+            }
+            function removeToCart() {
+                emit('remove-to-cart', variants.value[selectedVariant.value].id)
             }
             const title = computed(() =>{
                 const variant = variants.value[selectedVariant.value]
@@ -106,6 +110,7 @@ const productDisplay = {
                 sizes,
                 cart,
                 addToCart,
+                removeToCart,
                 updateImage,
                 toggleStock,
                 shipping
