@@ -16,15 +16,14 @@ const productDisplay = {
             <p>shipping: {{shipping}}</p>
             <p v-else>Out of Stock</p>
 
+            <product-details :details></product-details>
+
             <p v-if="onSale">On Sale</p>
             <p v-else>Not on Sale</p>
 
             <p v-if="inStock">In Stock</p>
             <p v-else>Out of Stock</p>
 
-            <ul>
-                <li v-for="detail in details">{{detail}}</li>
-            </ul>
             <div v-for="(variant,index) in variants" :key="variant.id"
             @mouseover="updateVariant(index)"
                  class="color-circle" :style="{backgroundColor: variant.color}">
@@ -42,7 +41,8 @@ const productDisplay = {
         </div>
         `,
         props: {
-            premium: Boolean
+            premium: Boolean,
+            details: Array
         },
         setup(props){
             const shipping = computed(()=>{
@@ -58,11 +58,6 @@ const productDisplay = {
             const productLink = ref('https://www.camt.cmu.ac.th') 
             const inventory = ref(100)
             const onSale = ref(true)
-            const details = ref([
-                '50% cotton',
-                '30% wool',
-                '20% polyyester'
-            ])
             const variants = ref([
                 { id: 2234, color: 'green', image: '/assets/images/socks_green.jpg', quantity:50, onSale: true},
                 { id: 2235, color: 'blue', image: '/assets/images/socks_blue.jpg', quantity:0, onSale: false}
@@ -107,7 +102,6 @@ const productDisplay = {
                 inStock,
                 inventory,
                 onSale,
-                details,
                 variants,
                 sizes,
                 cart,
