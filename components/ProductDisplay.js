@@ -39,7 +39,8 @@ const productDisplay = {
                     {{size.color}}: {{size.size}}
                 </div>
             </div>
-            <review-form    @review-submmited="addReview"></review-form>
+            <review-list v-if="reviews.length" :reviews="reviews"></review-list>
+            <review-form @review-submitted="addReview"></review-form>
         </div>
         `,
         props: {
@@ -115,10 +116,13 @@ const productDisplay = {
                 sizes,
                 cart,
                 addToCart,
+                reviews,
                 removeToCart,
                 updateImage,
                 toggleStock,
-                shipping
+                shipping,
+                addReview,
+                updateVariant
             }
         }
 }

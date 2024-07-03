@@ -28,6 +28,10 @@ const reviewForm = {
                 rating: null
             })
             function onSubmit(){
+                if (form.name === '' || form.review === '' || form.rating === null){
+                    alert('Review is incomplate. Please fill out every field.')
+                    return
+                }
                 const productReview = {
                     name: form.name,
                     review: form.review,
